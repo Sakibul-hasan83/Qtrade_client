@@ -18,7 +18,7 @@ return newUser
 }
 
 // signIn
-const signUser=(email,password)=>{
+const Login=(email,password)=>{
   
     setLoader(true)
     const signIn = signInWithEmailAndPassword(auth,email,password)
@@ -52,7 +52,7 @@ const authInfo ={
 user,
 loader,
 createUser,
-signUser,
+Login,
 logout,
 
 
