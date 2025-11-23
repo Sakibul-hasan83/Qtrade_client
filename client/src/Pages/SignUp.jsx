@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../Context/AuthContext";
+import axios from "axios";
 
 const Signup = () => {
 
-  const { createUser,logout } = useContext(AuthContext);  // FIXED
+  const { createUser,logout,user } = useContext(AuthContext);  // FIXED
 const navigate = useNavigate();
   const handleSignup = (event) => {
     event.preventDefault();
@@ -13,8 +14,13 @@ const navigate = useNavigate();
 
     const email = form.email.value;
     const password = form.password.value;
+const user ={email,password}
+    console.log(user);
 
-    console.log( email, password);
+
+axios.post("http://localhost:5000/users",user,{withCredentials:true})
+.then(res=>console.log(res.data))
+
 
     // --- Firebase Signup ---
     createUser(email, password)
